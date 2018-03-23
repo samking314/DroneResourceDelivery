@@ -1,3 +1,11 @@
+
+#
+#   getRandomData.py returns randomly calculated data
+#
+#   create by: ohmahgod he on xgames
+#
+
+
 from random import randint
 
 def getRandomItems( numOfItems, factXLen, factYLen, factZLen ) :
