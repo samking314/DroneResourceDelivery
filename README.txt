@@ -19,7 +19,9 @@
 # 9. The 'entry' point for Drones in the factory is at (0,0,0) and the 'exit' is
 #     (10,30,10).
 # 10. The factory items all face in one direction. I.e., if all the items face
-#     negative y-axis then an item in row x is only accessible from row x - 1
+#     negative y-axis then an item in row x is only accessible from row x - 1.
+#     This makes sense considering there is no 'aisle 30' so items in shelf 29
+#     would not be accessible if they faced the positive y-axis
 #
 
 #define the parameters for operations:
