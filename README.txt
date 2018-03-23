@@ -1,4 +1,5 @@
-#
+ DRONE RESOURCE DELIVERY
+ 
 #define the parameters for objects:
 # 1. Drones fill a 0.5 cubic meter space.
 # 2. The factory is a 3-dimensional cube containing 10 x 10 x 30 cubic meters.
@@ -15,6 +16,7 @@
 # 7. The 'entry' point for Drones in the factory is at (0,0,0) and the 'exit' is
 #     (10,30,10).
 #
+
 #define the parameters for operations:
 # 1. Drones enter at the 'entry' point and exit at the 'exit' point.
 # 2. Drones are used to enter the 'entry' into the 'highway' of a 3-dimensional
@@ -33,5 +35,4 @@
 #       a. 'moving' implies a Drone has a non-zero vector inside the
 #         3-dim space
 #       b. 'stationary' implies a Drone has a zero vector inside the 3-dim space
-#
 #
