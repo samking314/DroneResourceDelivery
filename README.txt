@@ -1,7 +1,12 @@
  DRONE RESOURCE DELIVERY
  
+ Problem Statement: Find the number of drones needed in order to remove 10 items placed randomly in the 
+  factory in 60 seconds. I.e. you have ten coordinates in the 3-dim space, so find the fastest way to get 
+  v1 number of Drones from the entry to their respective shelf locations and all to the exit in 60 seconds.
+ 
 #define the parameters for objects:
 # 1. Drones fill a 0.5 cubic meter space.
+# 2. Drones travel on average 1 meter per second.
 # 2. The factory is a 3-dimensional cube containing 10 x 10 x 30 cubic meters.
 # 3. The factory is 10 cubic meters height, 10 cubic meters wide and
 #     30 cubic meters long.
