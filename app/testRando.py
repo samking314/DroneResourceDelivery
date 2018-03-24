@@ -1,20 +1,19 @@
 import unittest
-
-#import sys
-#sys.path.append('/Users/samking/PythonProjects/DroneResourceRepo/app/getRandomData.py')
-#import file
 import getRandomData
-#getRandomData = input('getRandomData:')
-#importlib.import_module(getRandomData)
+from random import randint
 
-#def fun(x):
-#    return x + 1
+class MyTest( unittest.TestCase ) :
+    def test( self ) :
+        test1( self )
 
-class MyTest(unittest.TestCase):
-    def test(self):
-        pointsArr = set()
-        pointsArr = getRandomData.getRandomItems(10,10,30,10)
-        self.assertEqual(len(pointsArr), 10)
+def testGetRandoItems( self, numOfItems, XLen, YLen, ZLen ) :
+    pointsArr = set()
+    pointsArr = getRandomData.getRandomItems( numOfItems, XLen, YLen, ZLen )
+    self.assertEqual( len( pointsArr ), numOfItems )
+
+def test1( self ) :
+    for x in range( 0, 10 ) :
+        testGetRandoItems( self, randint(5, 30), randint(5, 30), randint(5, 30), randint(5, 30) )
 
 def main():
     unittest.main()
