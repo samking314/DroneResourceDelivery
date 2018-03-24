@@ -25,4 +25,5 @@ def getRandomItems( numOfItems, factXLen, factYLen, factZLen ) :
     return pointsArr
 
 
+#test
 #print(getRandomItems(5,10,30,10))
