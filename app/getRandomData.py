@@ -6,6 +6,8 @@
 
 from random import randint
 
+#gets random locations on shelves for a drone(simulating getting a job to pick
+#up an item and move to the exit)
 def getRandomItems( numOfItems, factXLen, factYLen, factZLen ) :
     #arr to return
     pointsArr = set()
