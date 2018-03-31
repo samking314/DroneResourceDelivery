@@ -50,6 +50,10 @@ def recurseTraj( currentLocation, destination, currTime, finalTime, falseFactory
     if ( len( trajectory ) == 0 and not ( destination in openHighways[finalTime] ) ) :
         return falseFactory
     #WRITE OUT CASES DUMMY
+    #case 1: can't move so just return the same space to the time + space array and recurse again BUT check to see if that space is available
+        #case 1.1: if available at that time then stay at the same space to the time + space array and recurse again
+        #case 1.2: if the same space isnt available the next time slot then return false and recurse
+    #case 2: can move back one space so return the previous space to the t+s array and recurse again
     if ( destination in openHighways[finalTime] ) :
         falseFactory[destination[0]][destination[1]][destination[2]] = 1
         if ( destination[0] == currentLocation[0] and
