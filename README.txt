@@ -1,3 +1,5 @@
+**Unfortunately I haven't had the time recently to contribute to this repo, so if I don't contribute to this repo again by the end of June it will be deleted. Send any ideas if you have any!**
+
 ----------------------> DRONE RESOURCE DELIVERY
 
 Problem Statement: Find the number of drones needed in order to remove 10 items placed randomly in the factory in 60 seconds. I.e. you have ten coordinates in the 3-dim space, so find the fastest way to get x number of Drones from the entry to their respective shelf locations and all to the exit in 60 seconds.
