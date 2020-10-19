@@ -1,11 +1,14 @@
 #
 #   testRando.py tests randomly calculated data
 #
-#   create by: "never go against a sicilian when death is on the line! haha haha haha-...."
+#   create by: Samuel King
 #
+
 import unittest
-import getRandomData
 from random import randint
+import sys
+sys.path.append('../')
+import getRandomData
 
 class MyTest( unittest.TestCase ) :
     def test( self ) :

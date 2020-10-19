@@ -1,7 +1,7 @@
 #
-#   findPaths.py finds the path of all Drones at a given time t
+#   findPaths.py finds the optimal set of paths P = [ p1, p2, ... , p10 ]
 #
-#   create by: merry chrystler
+#   create by: Samuel King
 #
 
 import getRandomData
@@ -49,7 +49,7 @@ def recurseTraj( currentLocation, destination, currTime, finalTime, falseFactory
     #if there's no way to get there at that time
     if ( len( trajectory ) == 0 and not ( destination in openHighways[finalTime] ) ) :
         return falseFactory
-    #WRITE OUT CASES DUMMY
+    #WRITE OUT CASES
     #case 1: can't move so just return the same space to the time + space array and recurse again BUT check to see if that space is available
         #case 1.1: if available at that time then stay at the same space to the time + space array and recurse again
         #case 1.2: if the same space isnt available the next time slot then return false and recurse

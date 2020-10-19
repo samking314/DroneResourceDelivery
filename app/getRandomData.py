@@ -1,7 +1,7 @@
 #
 #   getRandomData.py returns randomly calculated data
 #
-#   create by: ohmahgod he on xgames
+#   create by: Samuel King
 #
 
 from random import randint

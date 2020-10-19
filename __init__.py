@@ -1,3 +1,3 @@
 from DroneResourceRepo import *
 
-__all__ = ['getRandomData','testRando']
+__all__ = ['getRandomData','testRandomNumbers']
