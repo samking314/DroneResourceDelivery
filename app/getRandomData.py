@@ -6,20 +6,34 @@
 
 from random import randint
 
-#gets random locations on shelves for a drone(simulating getting a job to pick
-#up an item and move to the exit)
-def getRandomItems( numOfItems, factXLen, factYLen, factZLen ) :
-    #arr to return
-    pointsArr = set()
+# gets random locations in a field
+def createItemLocations( numOfItems, field ) :
+	#arr to return
+	locationsArr = set()
 
-    while len( pointsArr ) < numOfItems :
-        #using 1...factXlen-2 since the first and last rows are 'highways'
-        point = ( randint(1,factXLen - 2), randint(0,factYLen - 1), randint(0,factZLen - 1) )
-        #check to see if the row num(y val) is even
-        if ( point[1] & 1 ) == 0 :
-            newPoint = point[1] + 1 #+1 since only odd numbered rows have items
-            point = ( point[0], newPoint, point[2] )
+	i = 0
+	while i < numOfItems :
+		randomXCoord = randint( 1 , field.xLen - 2 )
+		randomYCoord = randint( 1 , field.yLen - 1 )
+		randomZCoord = randint( field.fieldFloor[randomXCoord][randomYCoord] , field.zLen - 1 )
+		locationsArr.add( ( randomXCoord, randomYCoord, randomZCoord ) )
+		i += 1
 
-        pointsArr.add( point )
+	return locationsArr
 
-    return pointsArr
+# generates field floor
+def createFieldFloor( fieldXLen, fieldYLen, fieldZLen ) :
+	#arr to return
+	fieldFloorMatrix = [ [ 0 for i in range( fieldXLen ) ] for j in range( fieldYLen ) ]
+
+	i = 0
+	j = 0
+	while i < fieldXLen :
+		while j < fieldYLen :
+			#set the max height of ground at 90 meters
+			fieldFloorMatrix[i][j] = randint( 0, 90 )
+			j += 1
+		j = 0
+		i += 1
+
+	return fieldFloorMatrix
