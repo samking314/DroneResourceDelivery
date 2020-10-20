@@ -19,10 +19,10 @@ class Drone :
 	def getHeight ( self ) :
 		return self.y
 
-	def getLocation ( self ) :
+	def getCurrentLocation ( self ) :
 		return [ self.x, self.y, self.z ]
 
-	def changeLocation ( self, newLocation ) :
+	def changeCurrentLocation ( self, newLocation ) :
 		self.x = newLocation.x
 		self.y = newLocation.y
 		self.z = newLocation.z
