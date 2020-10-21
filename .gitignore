@@ -2,5 +2,5 @@
 __pycache__/
 .pytest_cache/
 
-# Test results
+# Unit test / coverage reports
 results.xml
