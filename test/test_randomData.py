@@ -8,8 +8,8 @@ import unittest
 from random import randint
 import sys
 sys.path.append('../')
-import getRandomData
-from field import Field
+from app import getRandomData
+from app.field import Field
 
 class TestRandomData( unittest.TestCase ) :
 	
