@@ -10,6 +10,7 @@ import sys
 sys.path.append('../')
 from src import getRandomData
 from src.field import Field
+from src.item import Item
 
 class TestRandomData( unittest.TestCase ) :
 	
@@ -42,3 +43,15 @@ class TestRandomData( unittest.TestCase ) :
 	def test_createitemlocations( self ) :
 		for x in range( 0, 10 ) :
 			self.createitemlocations( 10 )
+
+	# test create an item with random location
+	def test_createoneitemlocation( self ) :
+		field = Field()
+		item = Item()
+		item.addRandomStartLocation(field)
+		self.assertTrue( item.startLocation != ( 0, 0, 0 ) )
+
+
+
+
+
