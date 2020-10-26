@@ -6,6 +6,17 @@
 
 from random import randint
 
+# creates and returns an item in a field
+def createOneItemLocation( field ) :
+	location = ( 0, 0, 0 )
+
+	randomXCoord = randint( 1 , field.xLen - 2 )
+	randomYCoord = randint( 1 , field.yLen - 1 )
+	randomZCoord = randint( field.fieldFloor[randomXCoord][randomYCoord] , field.zLen - 1 )
+	location = ( randomXCoord, randomYCoord, randomZCoord )
+
+	return location
+
 # gets random locations in a field
 def createItemLocations( numOfItems, field ) :
 	#arr to return
