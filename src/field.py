@@ -13,9 +13,6 @@ class Field :
 
 	def __init__ ( self ) :
 
-		# create set of drone objects in this field
-		# self.createDroneFleet()
-
 		# create only one drone
 		self.createSingleDrone()
 
@@ -26,7 +23,6 @@ class Field :
 		self.__fieldFloor = getRandomData.createFieldFloor( self.__xLen, self.__yLen, self.__zLen )
 
 		# create locations where items need to be picked up at
-		# self.itemLocations = getRandomData.createSetOfItemLocations( 10, self )
 		self.itemLocations = [ getRandomData.createOneItemLocation( self ) ]
 
 	def createDroneFleet ( self ) :
@@ -36,7 +32,6 @@ class Field :
 
 	def createSingleDrone ( self ) :
 		self.drones = [ Drone() ]
-
 
 	# getter methods
 	def getxLen ( self ) :

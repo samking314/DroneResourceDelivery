@@ -16,7 +16,7 @@ class Drone :
 		self.__z = 100
 
 	def __str__ ( self ) :
-		return "Hello my name is " + __class__.name + " and I am at coordinates (" + str(self.__x) + ", " + str(self.__y) + ", " + str(self.__z) + ")"
+		return "Hello my name is " + __class__.name + " and I am at coordinates (" + str( self.__x ) + ", " + str( self.__y ) + ", " + str( self.__z ) + ")"
 
 	def getHeight ( self ) :
 		return self.__y
