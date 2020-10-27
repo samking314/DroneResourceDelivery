@@ -23,6 +23,8 @@ Define the parameters for operations:
 		c. moving diagonally in any direction 1 meter costs 2.0 seconds
 		d. stopping is instantaneous and costs no time but waiting can cost any amount of time
 		e. picking up an item once stopped takes 12.0 seconds
+		f. moving up 1 meter costs 1.5 seconds
+		g. moving down 1 meter costs 1.75 seoncds
 		All time costs are based on a step function of either stopping or moving.
 	4. A Drone is either MOVING or STATIONARY. 'moving' and 'stationary' are
 		are defined as follows:

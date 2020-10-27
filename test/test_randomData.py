@@ -28,7 +28,7 @@ class TestRandomData( unittest.TestCase ) :
 
 	def createitemlocations( self, numOfItems ) :
 		field = Field()
-		locations = field.itemLocations
+		locations = field.getItemLocations()
 		count = 0
 		for i in range( len( locations ) ) :
 			count += 1

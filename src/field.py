@@ -23,7 +23,7 @@ class Field :
 		self.__fieldFloor = getRandomData.createFieldFloor( self.__xLen, self.__yLen, self.__zLen )
 
 		# create locations where items need to be picked up at
-		self.itemLocations = [ getRandomData.createOneItemLocation( self ) ]
+		self.__itemLocations = [ getRandomData.createOneItemLocation( self ) ]
 
 	def createDroneFleet ( self ) :
 		self.drones = [ 0 for x in range( 10 ) ]
@@ -45,3 +45,6 @@ class Field :
 
 	def getFieldFloor ( self ) :
 		return self.__fieldFloor
+
+	def getItemLocations ( self ) :
+		return self.__itemLocations

@@ -8,23 +8,6 @@ import getRandomData
 from random import randint
 import datetime
 
-
-# find the path of each drone recursively
-
-# we need to memoize a 2-dim graph that would contain the sum of the weights of each 
-# drone for that step in time
-
-
-
-
-
-
-
-
-
-
-
-
 #data points for Drone arrays are ( time, x, y, z )
 #the overall unordered set holds Drone arrays called DroneSet
 
@@ -83,7 +66,7 @@ def recurseTraj( currentLocation, destination, currTime, finalTime, falseFactory
 								currTime,
 								finalTime,
 								falseFactory )
-		else
+		else :
 			return recurseTraj( currentLocation,
 								destination,
 								currTime,

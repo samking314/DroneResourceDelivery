@@ -8,6 +8,7 @@ import getRandomData
 import bson
 
 class Item :
+	
 	def __init__ ( self ) :
 		self.name = "item #" + str( bson.objectid.ObjectId() )
 
