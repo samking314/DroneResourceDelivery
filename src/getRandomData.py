@@ -10,23 +10,25 @@ from random import randint
 def createOneItemLocation( field ) :
 	location = ( 0, 0, 0 )
 
-	randomXCoord = randint( 1 , field.xLen - 2 )
-	randomYCoord = randint( 1 , field.yLen - 1 )
-	randomZCoord = randint( field.fieldFloor[randomXCoord][randomYCoord] , field.zLen - 1 )
+	randomXCoord = randint( 1 , field.getxLen() - 2 )
+	randomYCoord = randint( 1 , field.getyLen() - 1 )
+	fieldFloor = field.getFieldFloor()
+	randomZCoord = randint( fieldFloor[randomXCoord][randomYCoord] , field.getzLen() - 1 )
 	location = ( randomXCoord, randomYCoord, randomZCoord )
 
 	return location
 
 # gets random locations in a field
-def createItemLocations( numOfItems, field ) :
+def createSetOfItemLocations( numOfItems, field ) :
 	#arr to return
 	locationsArr = set()
 
 	i = 0
 	while i < numOfItems :
-		randomXCoord = randint( 1 , field.xLen - 2 )
-		randomYCoord = randint( 1 , field.yLen - 1 )
-		randomZCoord = randint( field.fieldFloor[randomXCoord][randomYCoord] , field.zLen - 1 )
+		randomXCoord = randint( 1 , field.getxLen() - 2 )
+		randomYCoord = randint( 1 , field.getyLen() - 1 )
+		fieldFloor = field.getFieldFloor()
+		randomZCoord = randint( fieldFloor[randomXCoord][randomYCoord] , field.getzLen() - 1 )
 		locationsArr.add( ( randomXCoord, randomYCoord, randomZCoord ) )
 		i += 1
 

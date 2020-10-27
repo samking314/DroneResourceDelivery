@@ -1,7 +1,7 @@
 DRONE RESOURCE DELIVERY ✈️ 📦
 
 Problem Statement:
-	Find the optimal set of paths, p, in order to remove 1 item placed randomly in the field at position s. The coordinates are all in a 3-dimensional plane. An optimal path, p, decreases the sum of the amount of time it takes for p to be traversed by the drone.
+	Find the optimal path, p, in order to remove 1 item placed randomly in the field at position s. The coordinates are all in a 3-dimensional plane. An optimal path, p, decreases the sum of the amount of time it takes for p to be traversed by a drone.
 
 Define the parameters for objects:
 	1. A drone fills a 0.5 cubic meter space.

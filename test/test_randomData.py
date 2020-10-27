@@ -32,7 +32,7 @@ class TestRandomData( unittest.TestCase ) :
 		count = 0
 		for i in range( len( locations ) ) :
 			count += 1
-		self.assertEqual( count, 10 )
+		self.assertEqual( count, numOfItems )
 
 	# test field floor for completeness
 	def test_createfieldfloor( self ) :
@@ -42,14 +42,14 @@ class TestRandomData( unittest.TestCase ) :
 	# test all items were created
 	def test_createitemlocations( self ) :
 		for x in range( 0, 10 ) :
-			self.createitemlocations( 10 )
+			self.createitemlocations( 1 )
 
 	# test create an item with random location
 	def test_createoneitemlocation( self ) :
 		field = Field()
 		item = Item()
 		item.addRandomStartLocation(field)
-		self.assertTrue( item.startLocation != ( 0, 0, 0 ) )
+		self.assertTrue( item.getStartLocation() != ( 0, 0, 0 ) )
 
 
 

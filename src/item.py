@@ -11,5 +11,11 @@ class Item :
 	def __init__ ( self ) :
 		self.name = "item #" + str( bson.objectid.ObjectId() )
 
+	def __str__ ( self ) :
+		return "I am " + self.name
+
 	def addRandomStartLocation ( self, field ) :
-		self.startLocation = getRandomData.createOneItemLocation( field )
+		self.__startLocation = getRandomData.createOneItemLocation( field )
+
+	def getStartLocation ( self ) :
+		return self.__startLocation
