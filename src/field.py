@@ -7,7 +7,7 @@
 from drone import Drone
 import getRandomData
 
-class Field :
+class Field( object ) :
 
 	name = "The Highway"
 

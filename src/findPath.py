@@ -17,7 +17,7 @@ class Path ( Field ) :
 	pickupTimeCost = 12.0
 
 	def __init__ ( self ) :
-		super().__init__()
+		super( Path, self ).__init__()
 		self.__finalPathString = []
 		self.__finalPathCoords = []
 		self.__overallTimeCost = 0.0
@@ -32,8 +32,6 @@ class Path ( Field ) :
 
 		# find opt path to item
 		pathToItem = self.findPathTrajectoryToItem( fieldFloor, start, False, start, False )
-		print( "Start = " + str( start ) )
-		print( "Final Path = " + str( self.__finalPathString ) + str( self.__finalPathCoords ) )
 
 	# Recursively find cost by flipping the graph on its head and traversing it from finish to start.
 	# This will allow us to avoid issues of getting stuck behind a 'mountain' and not taking the optimal path.
@@ -47,13 +45,13 @@ class Path ( Field ) :
 
 			# fist pick up the item
 			if startLocation == currCoords and pickedUp == False :
-				self.__overallTimeCost += __class__.pickupTimeCost
+				self.__overallTimeCost += self.__class__.pickupTimeCost
 				self.__finalPathString.insert( 0, "Pick up Item from " + str( startLocation ) )
 				return self.findPathTrajectoryToItem( fieldFloor, startLocation, True, currCoords, False )
 
 			# can move forward
 			if currCoords[0] - 1 >= 0 and fieldFloor[ currCoords[0] - 1 ][ currCoords[1] ] < currCoords[2] :
-				self.__overallTimeCost += __class__.moveForwardTimeCost
+				self.__overallTimeCost += self.__class__.moveForwardTimeCost
 				nextCoords = ( currCoords[0] - 1, currCoords[1], currCoords[2] )
 				self.__finalPathString.insert( 0, "Move Forward from " + str( nextCoords ) )
 				fin = nextCoords == ( 0, 0, 100 )
@@ -61,7 +59,7 @@ class Path ( Field ) :
 			
 			# can move to the right
 			if currCoords[1] - 1 >= 0 and fieldFloor[ currCoords[0] ][ currCoords[1] - 1 ] < currCoords[2] :
-				self.__overallTimeCost += __class__.moveSideTimeCost
+				self.__overallTimeCost += self.__class__.moveSideTimeCost
 				nextCoords = ( currCoords[0], currCoords[1] - 1, currCoords[2] )
 				self.__finalPathString.insert( 0, "Move To the Right from " + str( nextCoords ) )
 				fin = nextCoords == ( 0, 0, 100 )
@@ -69,7 +67,7 @@ class Path ( Field ) :
 
 			# can move down
 			if currCoords[2] + 1 <= 100 :
-				self.__overallTimeCost += __class__.moveDownTimeCost
+				self.__overallTimeCost += self.__class__.moveDownTimeCost
 				nextCoords = ( currCoords[0], currCoords[1], currCoords[2] + 1 )
 				self.__finalPathString.insert( 0, "Move Down from " + str( nextCoords ) )
 				fin = nextCoords == ( 0, 0, 100 )
@@ -77,7 +75,7 @@ class Path ( Field ) :
 
 			# can move diagonally
 			if currCoords[0] - 1 >= 0 and currCoords[1] - 1 >= 0 and fieldFloor[ currCoords[0] - 1 ][ currCoords[1] - 1 ] < currCoords[2] :
-				self.__overallTimeCost += __class__.moveDiagTimeCost
+				self.__overallTimeCost += self.__class__.moveDiagTimeCost
 				nextCoords = ( currCoords[0] - 1, currCoords[1] - 1, currCoords[2] )
 				self.__finalPathString.insert( 0, "Move Diagonally from " + str( nextCoords ) )
 				fin = nextCoords == ( 0, 0, 100 )
@@ -90,17 +88,18 @@ class Path ( Field ) :
 			print( "There was an invalid path at " + str(startLocation) + str(pickedUp) + str(currCoords) + str(finished))
 
 
+	# setter methods
+
 	def changeOverallTimeCost ( self, cost ) :
 		self.__overallTimeCost += cost
+
+	# getter methods
 
 	def getOverallTimeCost ( self ) :
 		return self.__overallTimeCost
 
-
-path = Path()
-path.findOverallPath()
-
-
+	def getFinalPathCoords ( self ) :
+		return self.__finalPathCoords
 
 
 
