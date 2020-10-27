@@ -1,8 +1,19 @@
+# Virtual environments
+venv/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 .pytest_cache/
+*.pyc
 
 # Unit test / coverage reports
 results.xml
+.pytest_cache/
+.coverage
+htmlcov/
 
 .DS_Store
+dist/
+build/
+*.egg-info/
+instance/
