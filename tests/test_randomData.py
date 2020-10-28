@@ -8,9 +8,9 @@ import unittest
 from random import randint
 import sys
 sys.path.append('../')
-from src import getRandomData
-from src.field import Field
-from src.item import Item
+from lib import getRandomData
+from lib.field import Field
+from lib.item import Item
 
 class TestRandomData( unittest.TestCase ) :
 	

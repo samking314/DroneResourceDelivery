@@ -8,8 +8,8 @@ import unittest
 from random import randint
 import sys
 sys.path.append('../')
-from src import getRandomData
-from src.findPath import Path
+from lib import getRandomData
+from lib.findPath import Path
 
 class TestFindPath( unittest.TestCase ) :
 

@@ -4,10 +4,9 @@
 #   create by: Samuel King
 #
 
-import getRandomData
-from field import Field
+from . import getRandomData, field
 
-class Path ( Field ) :
+class Path ( field.Field ) :
 
 	moveForwardTimeCost = 1.0
 	moveSideTimeCost = 1.25
@@ -100,6 +99,9 @@ class Path ( Field ) :
 
 	def getFinalPathCoords ( self ) :
 		return self.__finalPathCoords
+
+	def getFinalPathString ( self ) :
+		return self.__finalPathString
 
 
 
