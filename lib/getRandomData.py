@@ -15,6 +15,7 @@ def createOneItemLocation( field ) :
 	fieldFloor = field.getFieldFloor()
 	randomZCoord = fieldFloor[randomXCoord][randomYCoord]
 	location = ( randomXCoord, randomYCoord, randomZCoord )
+	# location = ( 5, 5, 5 )
 
 	return location
 
@@ -43,8 +44,8 @@ def createFieldFloor( fieldXLen, fieldYLen, fieldZLen ) :
 	j = 0
 	while i < fieldXLen :
 		while j < fieldYLen :
-			#set the max height of ground at 50 meters
-			fieldFloorMatrix[i][j] = randint( 0, 50 )
+			#set the max height of ground to half the height of field
+			fieldFloorMatrix[i][j] = randint( 0, fieldZLen / 2 )
 			j += 1
 		j = 0
 		i += 1

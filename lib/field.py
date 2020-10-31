@@ -16,9 +16,9 @@ class Field( object ) :
 		self.createSingleDrone()
 
 		# create field floor
-		self.__xLen = 100
-		self.__yLen = 100
-		self.__zLen = 100
+		self.__xLen = 10
+		self.__yLen = 10
+		self.__zLen = 10
 		self.__fieldFloor = getRandomData.createFieldFloor( self.__xLen, self.__yLen, self.__zLen )
 
 		# create locations where items need to be picked up at
