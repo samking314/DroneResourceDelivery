@@ -91,6 +91,23 @@ class Path ( field.Field ) :
 	def changeOverallTimeCost ( self, cost ) :
 		self.__overallTimeCost += cost
 
+	def changeTimeCosts (
+		self,
+		moveDiagTimeCost,
+		moveForwardTimeCost,
+		moveSideTimeCost,
+		moveUpTimeCost,
+		moveDownTimeCost,
+		pickupTimeCost ) :
+		self.__timeCosts.setTimeCosts(
+			moveDiagTimeCost,
+			moveForwardTimeCost,
+			moveSideTimeCost,
+			moveUpTimeCost,
+			moveDownTimeCost,
+			pickupTimeCost
+		)
+
 	# getter methods
 
 	def getOverallTimeCost ( self ) :
