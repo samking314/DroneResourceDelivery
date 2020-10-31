@@ -4,16 +4,9 @@
 #   create by: Samuel King
 #
 
-from . import getRandomData, field
+from . import getRandomData, field, timeCosts
 
 class Path ( field.Field ) :
-
-	moveDiagTimeCost = 0.75
-	moveForwardTimeCost = 1.0
-	moveSideTimeCost = 1.25
-	moveUpTimeCost = 1.5
-	moveDownTimeCost = 1.75
-	pickupTimeCost = 12.0
 
 	def __init__ ( self ) :
 		super( Path, self ).__init__()
@@ -21,6 +14,7 @@ class Path ( field.Field ) :
 		self.__finalPathCoords = []
 		self.__overallTimeCost = 0.0
 		self.__zLen = self.getzLen()
+		self.__timeCosts = timeCosts.TimeCosts()
 
 	# find opt path, p, s.t. p.overallTimeCost is minimized
 	def findOverallPath ( self ) :
@@ -45,7 +39,7 @@ class Path ( field.Field ) :
 
 			# fist pick up the item
 			if startLocation == currCoords and pickedUp == False :
-				self.__overallTimeCost += self.__class__.pickupTimeCost
+				self.__overallTimeCost += self.__timeCosts.pickupTimeCost
 				self.__finalPathString.insert( 0, "Pick up Item from " + str( startLocation ) )
 				return self.findPathTrajectoryToItem( fieldFloor, startLocation, True, currCoords, False )
 
@@ -55,7 +49,7 @@ class Path ( field.Field ) :
 				fieldFloor[ currCoords[0] - 1 ][ currCoords[1] - 1 ] < currCoords[2] and \
 				fieldFloor[ currCoords[0] - 1 ][ currCoords[1] ] < currCoords[2] and \
 				fieldFloor[ currCoords[0] ][ currCoords[1] - 1 ] < currCoords[2] :
-				self.__overallTimeCost += self.__class__.moveDiagTimeCost
+				self.__overallTimeCost += self.__timeCosts.moveDiagTimeCost
 				nextCoords = ( currCoords[0] - 1, currCoords[1] - 1, currCoords[2] )
 				self.__finalPathString.insert( 0, "Move Diagonally from " + str( nextCoords ) )
 				fin = nextCoords == ( 0, 0, self.__zLen )
@@ -63,7 +57,7 @@ class Path ( field.Field ) :
 
 			# can move forward
 			if currCoords[0] - 1 >= 0 and fieldFloor[ currCoords[0] - 1 ][ currCoords[1] ] < currCoords[2] :
-				self.__overallTimeCost += self.__class__.moveForwardTimeCost
+				self.__overallTimeCost += self.__timeCosts.moveForwardTimeCost
 				nextCoords = ( currCoords[0] - 1, currCoords[1], currCoords[2] )
 				self.__finalPathString.insert( 0, "Move Forward from " + str( nextCoords ) )
 				fin = nextCoords == ( 0, 0, self.__zLen )
@@ -71,7 +65,7 @@ class Path ( field.Field ) :
 			
 			# can move to the right
 			if currCoords[1] - 1 >= 0 and fieldFloor[ currCoords[0] ][ currCoords[1] - 1 ] < currCoords[2] :
-				self.__overallTimeCost += self.__class__.moveSideTimeCost
+				self.__overallTimeCost += self.__timeCosts.moveSideTimeCost
 				nextCoords = ( currCoords[0], currCoords[1] - 1, currCoords[2] )
 				self.__finalPathString.insert( 0, "Move To the Right from " + str( nextCoords ) )
 				fin = nextCoords == ( 0, 0, self.__zLen )
@@ -79,7 +73,7 @@ class Path ( field.Field ) :
 
 			# can move down
 			if currCoords[2] + 1 <= self.__zLen :
-				self.__overallTimeCost += self.__class__.moveDownTimeCost
+				self.__overallTimeCost += self.__timeCosts.moveDownTimeCost
 				nextCoords = ( currCoords[0], currCoords[1], currCoords[2] + 1 )
 				self.__finalPathString.insert( 0, "Move Down from " + str( nextCoords ) )
 				fin = nextCoords == ( 0, 0, self.__zLen )
