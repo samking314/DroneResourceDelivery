@@ -15,7 +15,6 @@ def createOneItemLocation( field ) :
 	fieldFloor = field.getFieldFloor()
 	randomZCoord = fieldFloor[randomXCoord][randomYCoord]
 	location = ( randomXCoord, randomYCoord, randomZCoord )
-	# location = ( 5, 5, 5 )
 
 	return location
 

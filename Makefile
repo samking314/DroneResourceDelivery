@@ -1,23 +1,17 @@
 help:
-	@echo "  env         create a development environment using virtualenv"
+	@echo "  env         create a development environment using venv"
 	@echo "  deps        install dependencies using pip"
-	@echo "  test        run all your tests using py.test"
-# 	@echo "  clean       remove unwanted files like .pyc's"
+	@echo "  test        run all your tests using unittest"
+	@echo "  clean       remove unwanted files like .pyc's"
 
-env:
-	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
-	python get-pip.py && \
-	rm -rf get-pip.py && \
-	pip install virtualenv && \
-	virtualenv env && \
-	. env/bin/activate && \
-	make deps
+requirements: .requirements.txt
 
-deps:
-	pip install -r requirements.txt
+.requirements.txt: requirements.txt
+	$(shell . .venv/bin/activate && pip install -r requirements.txt)
 
-# clean:
-# 	python manage.py clean
+.PHONY: run
+run:
+	$(shell . .venv/bin/activate && python3 wsgi.py)
 
 test:
 	python -m unittest discover
@@ -25,3 +19,8 @@ test:
 .PHONY: deploy
 deploy:
 	$(shell . ./deploy.sh)
+
+.PHONY: clean
+clean:
+	find . -name '*.pyc' -delete
+	find . -name '__pycache__' -delete
