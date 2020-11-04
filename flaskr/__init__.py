@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, request, render_template
+from flask import Flask, render_template
 from lib import getRandomData
 from lib.findPath import Path
 

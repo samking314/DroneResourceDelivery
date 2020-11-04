@@ -35,7 +35,7 @@
 		<script>
 			var graphDiv = document.getElementById( 'bargraph' );
 			var data = {{ plot | safe }};
-			var data = [{
+			var dataToPlot = [{
 				x: data.x,
 				y: data.y,
 				z: data.z,
@@ -68,7 +68,7 @@
 			  }
 			};
 
-			Plotly.newPlot( graphDiv, data, layout );
+			Plotly.newPlot( graphDiv, dataToPlot, layout );
 		</script>
 	</div>
  
