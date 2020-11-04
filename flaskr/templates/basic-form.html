@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+	<style type="text/css">
+		.header {
+			text-align: center;
+			background-color: rgb(136, 185, 229);
+			line-height: 70px;
+		}
+		.plot {
+			margin-top: 30px;
+			text-align: center;
+		}
+	</style>
+</head>
+ 
+<body>
+ 
+	<div class="header">
+		<h2>
+			Drone Path Demo
+		</h2>
+	</div>
+ 
+	<div id="plot" class="plot">
+	</div>
+ 
+</body>
+ 
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+ 
+	<div class="plot" id="bargraph">
+		<script>
+			var graphDiv = document.getElementById( 'bargraph' );
+			var data = {{ plot | safe }};
+			var dataToPlot = [{
+				x: data.x,
+				y: data.y,
+				z: data.z,
+				type: 'mesh3d'
+			}, {
+				x: data.xs,
+				y: data.ys,
+				z: data.zs,
+				type: 'scatter3d'
+			}, {
+				x: data.finalX,
+				y: data.finalY,
+				z: data.finalZ,
+				type: 'scatter3d'
+			}];
+
+			var layout = {
+			  xaxis: {
+			    title: 'X',
+			    showgrid: false,
+			    zeroline: false
+			  },
+			  yaxis: {
+			    title: 'Y',
+			    showline: false
+			  },
+			  zaxis: {
+			    title: 'Z',
+			    showline: false
+			  }
+			};
+
+			Plotly.newPlot( graphDiv, dataToPlot, layout );
+		</script>
+	</div>
+ 
+</html>

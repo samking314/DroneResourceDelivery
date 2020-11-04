@@ -4,8 +4,7 @@
 #	created by: Samuel King
 #
 
-from drone import Drone
-import getRandomData
+from . import getRandomData, drone
 
 class Field( object ) :
 
@@ -17,9 +16,9 @@ class Field( object ) :
 		self.createSingleDrone()
 
 		# create field floor
-		self.__xLen = 100
-		self.__yLen = 100
-		self.__zLen = 100
+		self.__xLen = 10
+		self.__yLen = 10
+		self.__zLen = 10
 		self.__fieldFloor = getRandomData.createFieldFloor( self.__xLen, self.__yLen, self.__zLen )
 
 		# create locations where items need to be picked up at
@@ -28,10 +27,10 @@ class Field( object ) :
 	def createDroneFleet ( self ) :
 		self.drones = [ 0 for x in range( 10 ) ]
 		for i in range( 10 ):
-			self.drones[i] = Drone()
+			self.drones[i] = drone.Drone()
 
 	def createSingleDrone ( self ) :
-		self.drones = [ Drone() ]
+		self.drones = [ drone.Drone() ]
 
 	# getter methods
 	def getxLen ( self ) :
