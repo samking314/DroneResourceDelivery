@@ -1,5 +1,3 @@
-.PHONY: docs test
-
 help:
 	@echo "  env         create a development environment using virtualenv"
 	@echo "  deps        install dependencies using pip"
@@ -23,3 +21,7 @@ deps:
 
 test:
 	python -m unittest discover
+
+.PHONY: deploy
+deploy:
+	$(shell . ./deploy.sh)

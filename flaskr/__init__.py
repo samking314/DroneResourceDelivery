@@ -16,6 +16,8 @@ import io
 import numpy as np
 from matplotlib import cm
 
+import plotly.graph_objects as go
+
 def create_app( test_config = None ) :
 	# create and configure the app
 	app = Flask( __name__, instance_relative_config = True )
@@ -42,47 +44,63 @@ def create_app( test_config = None ) :
 	def display_path() :
 		return render_template( 'basic-form.html' )
 
-	def create_figure( xs, ys, zs, x, y, z, dx, dy, dz, itemLocation ) :
+	def create_figure( xs, ys, zs, x, y, z, itemLocation ) :
 		fig = Figure()
 		ax = fig.add_subplot( 111, projection = '3d' )
 		ax.plot_wireframe(x, y, z)
-		ax.scatter( [itemLocation[0]], [itemLocation[1]], itemLocation[2], color='purple' )
+		ax.scatter( [ itemLocation[0] ], [ itemLocation[1] ], itemLocation[2], color='purple' )
 		ax.plot( xs, ys, zs, color = 'r' )
 		return fig
 
 	@app.route( '/find-path', methods = [ 'POST' ] )
-	def display_path_post() :
-		path = Path()
-		path.findOverallPath()
-		fieldFloor = path.getFieldFloor()
-		pathCoords = path.getFinalPathCoords()
-		pathString = path.getFinalPathString()
-		timeCost = path.getOverallTimeCost()
-		itemLocations = path.getItemLocations()
-		xs = [ c[0] for c in pathCoords ]
-		ys = [ c[1] for c in pathCoords ]
-		zs = [ c[2] for c in pathCoords ]
+	def dsiplay_path_post() :
+		fig = go.Figure(go.Surface(
+			contours = {
+				"x": {"show": True, "start": 1.5, "end": 2, "size": 0.04, "color":"white"},
+				"z": {"show": True, "start": 0.5, "end": 0.8, "size": 0.05}
+			},
+			x = [1,2,3,4,5],
+			y = [1,2,3,4,5],
+			z = [
+				[0, 1, 0, 1, 0],
+				[1, 0, 1, 0, 1],
+				[0, 1, 0, 1, 0],
+				[1, 0, 1, 0, 1],
+				[0, 1, 0, 1, 0]
+			]))
+		fig.update_layout(
+				scene = {
+					"xaxis": {"nticks": 20},
+					"zaxis": {"nticks": 4},
+					'camera_eye': {"x": 0, "y": -1, "z": 0.5},
+					"aspectratio": {"x": 1, "y": 1, "z": 0.2}
+				})
+		return render_template( 'basic-form.html', plot = fig )
+	# def display_path_post() :
+	# 	path = Path()
+	# 	path.findOverallPath()
+	# 	fieldFloor = path.getFieldFloor()
+	# 	pathCoords = path.getFinalPathCoords()
+	# 	pathString = path.getFinalPathString()
+	# 	timeCost = path.getOverallTimeCost()
+	# 	itemLocations = path.getItemLocations()
+	# 	xs = [ c[0] for c in pathCoords ]
+	# 	ys = [ c[1] for c in pathCoords ]
+	# 	zs = [ c[2] for c in pathCoords ]
 
-		nx, ny = len( fieldFloor ), len( fieldFloor )
-		X = np.array([[i] * nx for i in range(ny)]).ravel()
-		Y = np.array([i for i in range(nx)] * ny)
-		Z = np.array(fieldFloor).flatten()
-		dx = np.ones(nx*ny)
-		dy = np.ones(nx*ny)
-		A = np.array(fieldFloor)
-		dz = A.ravel()
+	# 	nx, ny = len( fieldFloor ), len( fieldFloor )
+	# 	X = np.array( [ [i] * nx for i in range(ny) ] ).ravel()
+	# 	Y = np.array( [ i for i in range(nx) ] * ny )
+	# 	Z = np.array( fieldFloor ).flatten()
 
-		x = np.reshape(X, (10, 10))
-		y = np.reshape(Y, (10, 10))
-		z = np.reshape(Z, (10, 10))
+	# 	x = np.reshape( X, ( 10, 10 ) )
+	# 	y = np.reshape( Y, ( 10, 10 ) )
+	# 	z = np.reshape( Z, ( 10, 10 ) )
 
-		fig = create_figure( xs, ys, zs, x, y, z, dx, dy, dz, itemLocations[0] )
-		output = io.BytesIO()
-		FigureCanvas( fig ).print_png( output )
-		print("FIELD FLOOR" + str(fieldFloor))
-		print("PATH STRING" + str(pathString))
-		print("FINAL PLACE" + str(itemLocations[0]))
-		return Response( output.getvalue(), mimetype = 'image/png' )
+	# 	fig = create_figure( xs, ys, zs, x, y, z, itemLocations[0] )
+	# 	output = io.BytesIO()
+	# 	FigureCanvas( fig ).print_png( output )
+	# 	return Response( output.getvalue(), mimetype = 'image/png' ) 
 
 	return app
 
