@@ -7,18 +7,18 @@ help:
 requirements: .requirements.txt
 
 .requirements.txt: requirements.txt
-	$(shell . .venv/bin/activate && pip install -r requirements.txt)
+	. .venv/bin/activate && pip install -r requirements.txt
 
 .PHONY: run
 run:
-	$(shell . .venv/bin/activate && python3 wsgi.py)
+	. .venv/bin/activate && python3 wsgi.py
 
 test:
 	python -m unittest discover
 
 .PHONY: deploy
 deploy:
-	$(shell . ./deploy.sh)
+	. ./deploy.sh
 
 .PHONY: clean
 clean:
