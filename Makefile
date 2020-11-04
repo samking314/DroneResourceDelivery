@@ -14,7 +14,7 @@ run:
 	. .venv/bin/activate && python3 wsgi.py
 
 test:
-	python -m unittest discover
+	python3 -m unittest discover
 
 .PHONY: deploy
 deploy:

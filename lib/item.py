@@ -4,7 +4,7 @@
 #	created by: Samuel King
 #
 
-import getRandomData
+from . import getRandomData
 import bson
 
 class Item :
