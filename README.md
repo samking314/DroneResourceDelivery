@@ -12,4 +12,7 @@ Regardless, I cut the complexity of both computation and search to O(1) and O(1)
 
 If you have any questions at all please reach out! (email's in my bio)
 
-
+## to run
+```
+make deploy
+```
