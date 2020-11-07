@@ -2,7 +2,7 @@
 
 Here you can test and simulate a drone delivering an item to a specified location given a defined field with boundaries and obstacles.
 
-
+![Demo Image](https://github.com/samking314/DroneResourceDelivery/blob/master/res/Screen_Shot_2020-11-07_demo.png)
 
 The path found using my recursive algorithm is indeed optimal. The funny thing is, I flipped 
 the graph upside down and start the drone at it's final destination and then work backward from there to find the optimal path. 
