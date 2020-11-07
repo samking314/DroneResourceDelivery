@@ -16,3 +16,8 @@ If you have any questions at all please reach out! (email's in my bio)
 ```
 make deploy
 ```
+
+## to test
+```
+make test
+```
