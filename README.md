@@ -2,6 +2,8 @@
 
 Here you can test and simulate a drone delivering an item to a specified location given a defined field with boundaries and obstacles.
 
+
+
 The path found using my recursive algorithm is indeed optimal. The funny thing is, I flipped 
 the graph upside down and start the drone at it's final destination and then work backward from there to find the optimal path. 
 I could've used the algorithm the right side up but then would've had to memoize the entire path trajectories which is O(n^3) and
@@ -20,4 +22,10 @@ make deploy
 ## to test
 ```
 make test
+```
+
+## if failing
+```
+rm -rf .venv
+make deploy
 ```
