@@ -1,6 +1,6 @@
 help:
-	@echo "  env         create a development environment using venv"
-	@echo "  deps        install dependencies using pip"
+	@echo "  run         runs in dev environment"
+	@echo "  deploy      install dependencies using pip and runs in dev mode"
 	@echo "  test        run all your tests using unittest"
 	@echo "  clean       remove unwanted files like .pyc's"
 
