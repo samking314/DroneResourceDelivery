@@ -31,9 +31,9 @@
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
  
-	<div class="plot" id="bargraph">
+	<div class="plot" id="3d-grid">
 		<script>
-			var graphDiv = document.getElementById( 'bargraph' );
+			var graphDiv = document.getElementById( '3d-grid' );
 			var data = {{ plot | safe }};
 			var dataToPlot = [{
 				x: data.x,
