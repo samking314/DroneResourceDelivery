@@ -26,6 +26,5 @@ make test
 
 ## if failing
 ```
-rm -rf .venv
-make deploy
+rm -rf .venv && make deploy
 ```
